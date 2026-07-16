@@ -63,16 +63,9 @@
 
 ---
 
-## 五、Obsidian 协作（可选）
+## 五、编辑环境
 
-可将本仓库目录加入 Obsidian 库，仅编辑 `.md` 文件；**提交 Git 后**再在消费项目 `install.ps1`。
-
-推荐 Obsidian 只打开：
-
-- `templates/`
-- `使用指南.md`、`README.md`、`CONTRIBUTING.md`
-
-Hook（`.mjs`）、脚本（`.ps1`）在 Cursor / VS Code 中维护。
+在 **canonical 仓库**用 Cursor / VS Code 编辑即可；`.md` 与 `.mjs` / `.ps1` 均在此仓库 `git commit`，各消费项目再 `install.ps1`。
 
 ---
 

@@ -1,0 +1,6 @@
+# Feature Delivery Kit — Canonical
+
+/node_modules/
+.DS_Store
+Thumbs.db
+*.bak.*

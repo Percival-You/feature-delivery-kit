@@ -8,7 +8,7 @@
 ## 一、架构
 
 ```
-feature-delivery-kit-canonical/     ← SSOT（Git 主库，Obsidian 可编辑 .md）
+feature-delivery-kit-canonical/     ← SSOT（Git 主库，在此 commit）
         │
         ├── junction（无 Git 的项目）
         └── git submodule（有 Git 的项目）
@@ -64,20 +64,19 @@ git submodule update --remote feature-delivery-kit
 
 ## 四、当前已接入项目
 
-| 项目 | 路径 | 接入方式 |
-|------|------|----------|
-| project-workspace | `D:\workspace\project-workspace` | Junction → canonical |
+| 项目 | 路径 | 接入方式 | 业务 Git 是否包含 FDK |
+|------|------|----------|----------------------|
+| project-workspace | `D:\workspace\project-workspace` | Junction → canonical | **否**（`project/`、`project-front/` 为独立仓库，FDK 在其外） |
 
 ---
 
-## 五、与 Obsidian 配合
+## 五、与业务仓库的关系
 
-1. Obsidian 打开本仓库或将其子目录加入库
-2. 在 Obsidian 编辑 `templates/*.md`、`使用指南.md`
-3. `git commit` 到 canonical
-4. 各项目 `install.ps1`（Skills/Agents 有变更时）
+- **FDK 变更**：只在 `feature-delivery-kit-canonical` 里 `git commit`
+- **业务代码**：各项目自己的 Git 仓库提交，**不包含** FDK（除非误将 junction 目录 `git add` 进业务仓）
+- **Feature 规格**（acceptance、rtm）：放在各项目 `docsRoot`（如 `.kiro/docs/tech/`），不放在本 kit 仓库
 
-Feature 规格文档（acceptance、rtm）**不放在本仓库**，放在各项目 `docsRoot` 或 Obsidian 的 `FDP/features/`。
+维护 FDK **仅需 Git + Cursor/VS Code**，Obsidian 非必需。
 
 ---
 
@@ -86,3 +85,4 @@ Feature 规格文档（acceptance、rtm）**不放在本仓库**，放在各项�
 - 接入（junction / submodule）互斥，按项目是否 Git 选型 ✅
 - 升级路径覆盖 submodule 与 junction ✅
 - Feature 文档与 kit 职责分离 ✅
+- 业务仓与 canonical 仓提交边界已说明 ✅
