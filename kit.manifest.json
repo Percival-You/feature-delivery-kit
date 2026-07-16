@@ -1,0 +1,24 @@
+{
+  "name": "feature-delivery-kit",
+  "version": "1.3.0",
+  "description": "通用 Feature 交付流水线 — Skills、Agents、Hooks、模板（含 test-cases 边界陷阱 + 原型保真规则 TRAP-UID）",
+  "files": {
+    "skills": [
+      "feature-delivery-pipeline",
+      "spec-lock",
+      "spec-analyze",
+      "spec-converge"
+    ],
+    "agents": [
+      "spec-analyzer",
+      "spec-verifier"
+    ],
+    "hooks": [
+      "fdp-spec-lock-gate.mjs",
+      "fdp-converge-check.mjs"
+    ],
+    "config": "fdp.config.example.json",
+    "templates": "templates/feature",
+    "templatesNote": "含 test-cases/common-traps.md（TRAP-BSA/RAS/DAS）与 spec/prototype-fidelity-rules.md（TRAP-UID / U1～U6）"
+  }
+}

@@ -1,0 +1,34 @@
+---
+description: FDP 流水线路由 — Feature 交付全流程、Spec Lock、Analyze、Converge 入口
+alwaysApply: true
+---
+
+# FDP 流水线路由
+
+当用户消息匹配以下模式时，**优先**读取 `.cursor/skills/feature-delivery-pipeline/SKILL.md` 并按其调度执行。
+
+## 触发关键词
+
+- `FDP` / `全流程` / `feature 交付`
+- `from_spec_lock` / `from_development` / `Spec Lock`
+- `执行 Converge` / `执行 Analyze` / `检测产物`
+- `按 FDP` + feature 名
+
+## 子 Skill 直达
+
+| 用户意图 | 读取 Skill |
+|----------|------------|
+| 生成 Spec Lock / 实现清单 | `#spec-lock` |
+| 实现前审查 / Analyze | `#spec-analyze` + 委派 `spec-analyzer` |
+| 收敛 / Converge | `#spec-converge` + 委派 `spec-verifier` |
+
+## 与专家路由关系
+
+- FDP **编排** product / architect / dev / qa 专家，不替代其规范
+- 快速通道（加字段等）仍走 `expert-routing` 规则 0
+- 标准/复杂 feature 开发须经 G3 Spec Lock（`approved: true`）
+
+## 配置
+
+- `.cursor/fdp.config.json` — 路径、`activeFeature`、门禁开关
+- 移植包：`feature-delivery-kit/`（见 README.md）
