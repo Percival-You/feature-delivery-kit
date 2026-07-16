@@ -69,6 +69,7 @@ description: Feature 交付流水线总指挥 — 产物检测、入口判定、
 | 5 | 开发 + 单测 | `#dev-expert` + `#testing-strategy` | — |
 | 5 | 代码 review | `#cross-review` + bugbot | — |
 | **5.5** | Converge | `#spec-converge` + `spec-verifier` | G7 收敛 |
+| **5.6** | 踩坑回流 FDK | `#fdk-contribute` | 可选；晋升 FDK 须用户确认 |
 | 6 | 接口/文档/提交 | `#dev-expert` + 项目规范 | G8 交付确认 |
 | — | UI 验证 | **人工** + spec 结构项 | ui-diff-checklist **结构复核** + 视觉 |
 
@@ -117,6 +118,7 @@ description: Feature 交付流水线总指挥 — 产物检测、入口判定、
 | `#spec-lock` | 2.5 规格固化（含 `prototype-fidelity-rules`） |
 | `#spec-analyze` | 2.6 实现前审查 |
 | `#spec-converge` | 5.5 实现后收敛 |
+| `#fdk-contribute` | 5.6 踩坑回流与 FDK 模式晋升 |
 | `#product-expert` / `#architect-expert` / `#dev-expert` | 项目阶段执行器 |
 | `#skills-evolution` | 流程偏差时记录改进信号 |
 

@@ -1,7 +1,7 @@
 # FDK 贡献指南 — 踩坑回流与模式晋升
 
-> **分类维度**：按「知识层级 × 是否晋升 FDK」  
-> 本文说明：开发中踩坑写哪里、何时回流 canonical kit、谁负责 bump 版本。
+> **AI 执行**：Read `#fdk-contribute` Skill（Converge 后或用户说「踩坑回流/晋升 FDK」）。  
+> **分类维度**：按「知识层级 × 是否晋升 FDK」
 
 ---
 

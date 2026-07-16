@@ -6,6 +6,21 @@
 
 ---
 
+## [1.4.0] - 2026-07-16
+
+### Added
+
+- **`fdk-contribute` Skill** — 踩坑回流与模式晋升：Converge 后评估 P1～P3，可复用则更新 canonical FDK
+- FDP 步骤 **5.6**、`fdp-routing` 口令「踩坑回流 / 晋升 FDK」
+- `spec-converge` 报告模板增加「可回流 FDK 踩坑」节
+
+### Changed
+
+- `CONTRIBUTING.md` 指向 `#fdk-contribute` 作为 AI 执行入口
+- 文档明确 Git only 维护（`MAINTENANCE.md`）
+
+---
+
 ## [1.3.0] - 2026-07-16
 
 ### Changed

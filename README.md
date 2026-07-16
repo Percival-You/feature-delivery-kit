@@ -81,4 +81,4 @@ feature-delivery-kit/
 
 ## 版本
 
-- kit: **1.3.0**（SSOT 独立仓库 + 模板去污；见 [CHANGELOG.md](./CHANGELOG.md)）
+- kit: **1.4.0**（+ `fdk-contribute` 踩坑回流 Skill；见 [CHANGELOG.md](./CHANGELOG.md)）

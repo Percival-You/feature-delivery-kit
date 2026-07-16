@@ -83,9 +83,16 @@ Hook 脚本做**机械检查**（RTM pending + 测试命令）；语义审查靠
 ...
 
 ## 下一步
-- 已收敛 → 步骤 6 交付 / cross-review
+- 已收敛 → 步骤 5.6 `#fdk-contribute`（踩坑回流，可选）→ 步骤 6 交付 / cross-review
 - 未收敛 → 补任务列表
+
+## 可回流 FDK 踩坑（已收敛时填写）
+| 摘要 | 建议 TRAP | 是否建议晋升 |
+|------|-----------|--------------|
+| … | TRAP-BSA / TRAP-UID / 新模式 | 引用 / 晋升 / 待观察 |
 ```
+
+收敛后 **建议** Read `#fdk-contribute`，将上表条目写入 `fdk-promotion-report.md`。
 
 ---
 

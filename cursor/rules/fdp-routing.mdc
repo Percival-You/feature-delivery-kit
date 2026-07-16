@@ -12,6 +12,7 @@ alwaysApply: true
 - `FDP` / `全流程` / `feature 交付`
 - `from_spec_lock` / `from_development` / `Spec Lock`
 - `执行 Converge` / `执行 Analyze` / `检测产物`
+- `踩坑回流` / `晋升 FDK` / `更新 fdk` / `回流 FDK`
 - `按 FDP` + feature 名
 
 ## 子 Skill 直达
@@ -21,6 +22,7 @@ alwaysApply: true
 | 生成 Spec Lock / 实现清单 | `#spec-lock` |
 | 实现前审查 / Analyze | `#spec-analyze` + 委派 `spec-analyzer` |
 | 收敛 / Converge | `#spec-converge` + 委派 `spec-verifier` |
+| 踩坑回流 / 晋升 FDK / 更新 fdk | `#fdk-contribute` |
 
 ## 与专家路由关系
 
