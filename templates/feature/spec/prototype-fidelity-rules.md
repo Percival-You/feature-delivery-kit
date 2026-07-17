@@ -27,10 +27,40 @@
 | **UID-DISP-FMT** | 展示格式不符 | 只显示末级名称、缺全路径、缺单位 | 部门只显示末级名 |
 | **UID-API-SHIM** | 前端补后端展示 | 为列表/详情重复请求树或拼路径 | 前端拼路径代替 API 字段 |
 | **UID-NAV-DIFF** | 导航/入口不一致 | 换上下文路径与原型不同（可接受须写 revision） | 入口路径变更须在 ui-spec 写明 |
+| **UID-VIF-ELSE** | 条件链挂错节点 | 互斥态（有值/空态）同时出现；`v-else-if` 挂在无关兄弟上 | 有数据仍显示「未设置」行 |
 
 模式可叠加（如 UID-MISS-COL + UID-API-SHIM）。
 
 ---
+
+## 1.1 UID-VIF-ELSE — 互斥条件链
+
+### 反模式
+
+```text
+❌ <div v-if="hasValue">展示值</div>
+   <div v-if="extraBanner">提示条</div>          <!-- 独立块 -->
+   <div v-else-if="canEdit">空态 / 去设置</div>  <!-- else 绑在提示条上 → hasValue 时仍可能显示空态 -->
+
+✅ <div v-if="hasValue">展示值</div>
+   <div v-else-if="canEdit">空态 / 去设置</div>  <!-- 互斥链紧邻 -->
+   <div v-if="extraBanner">提示条</div>           <!-- 独立 v-if，不参与 else -->
+```
+
+### 场景码
+
+| 场景码 | 场景 | 预期 |
+|--------|------|------|
+| **VIF-WRONG-ELSE** | 主字段有值且可编辑 | **只**显示有值行，不显示空态行 |
+| **VIF-EMPTY-ONLY** | 主字段无值且可编辑 | 只显示空态行 |
+
+### FDP 动作
+
+| 阶段 | 动作 |
+|------|------|
+| Spec Lock | 互斥展示写入 ui-spec（有值 / 空态 / 附加条分列） |
+| Analyze / Converge | diff 中新增 `v-else-if` → 核对是否与目标 `v-if` 紧邻；命中 **VIF-WRONG-ELSE** |
+| 开发 | 附加 Tag/信息条用独立 `v-if`，禁止插入互斥链中间 |
 
 ## 2. Spec Lock 必问（有原型时）
 
@@ -114,6 +144,7 @@
 - [ ] 列表列与 ui-spec 一致；展示字段有 API 字段或 AC 注明前端派生
 - [ ] 双栏页面：左右内容与 ui-spec 一致（UID-LAYOUT-CTX）
 - [ ] 未引入 spec 未要求的页级导航/筛选（UID-EXTRA-CTL）
+- [ ] diff 中新增 `v-else-if` → 与目标 `v-if` **紧邻**；互斥空态不得与有值态并存（**UID-VIF-ELSE** / VIF-WRONG-ELSE）
 
 ---
 
@@ -137,7 +168,7 @@
 
 ## MECE 自检
 
-- **偏离类型**：UID-EXTRA-CTL / MISS-COL / LAYOUT-CTX / DISP-FMT / API-SHIM / NAV-DIFF 互斥 ✅  
+- **偏离类型**：UID-EXTRA-CTL / MISS-COL / LAYOUT-CTX / DISP-FMT / API-SHIM / NAV-DIFF / VIF-ELSE 互斥 ✅  
 - **阶段**：Spec Lock → Analyze → 开发 → Converge → 走查 全覆盖 ✅  
 - **职责**：结构 = spec 可机械查；像素 = 人工走查 ✅  
 - **⚠️**：动效、响应式断点细节仍走 ui-diff-checklist，不强行写入 FDK 模式库

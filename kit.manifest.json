@@ -1,6 +1,6 @@
 {
   "name": "feature-delivery-kit",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "通用 Feature 交付流水线 — Skills、Agents、Hooks、模板（含 test-cases 边界陷阱 + 原型保真规则 TRAP-UID）",
   "files": {
     "skills": [
@@ -20,6 +20,6 @@
     ],
     "config": "fdp.config.example.json",
     "templates": "templates/feature",
-    "templatesNote": "含 test-cases/common-traps.md（TRAP-BSA/RAS/DAS）与 spec/prototype-fidelity-rules.md（TRAP-UID / U1～U6）"
+    "templatesNote": "含 test-cases/common-traps.md（TRAP-BSA/RAS/DAS/CDF）与 spec/prototype-fidelity-rules.md（TRAP-UID / U1～U6 / UID-VIF-ELSE）"
   }
 }

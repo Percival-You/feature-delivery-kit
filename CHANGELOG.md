@@ -6,6 +6,18 @@
 
 ---
 
+## [1.5.0] - 2026-07-17
+
+### Added
+
+- **TRAP-CDF**（Config Default Compatibility）→ `templates/feature/test-cases/common-traps.md`
+  - 侦测 Q5；场景码 `CDF-DEFAULT-MISMATCH` / `CDF-SWITCH-RELATED` / `CDF-LOAD-LEGACY`
+- **UID-VIF-ELSE**（条件链挂错节点）→ `templates/feature/spec/prototype-fidelity-rules.md`
+  - 场景码 `VIF-WRONG-ELSE` / `VIF-EMPTY-ONLY`
+- 来源：`version-auto-create-enhancement` 踩坑回流（用户确认晋升 CDF+VIF）
+
+---
+
 ## [1.4.0] - 2026-07-16
 
 ### Added

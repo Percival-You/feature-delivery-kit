@@ -13,6 +13,7 @@
 | **TRAP-BSA** | Batch Serial Assignment | 一次请求多条记录，服务端在循环里分配序号/编号/单号 |
 | **TRAP-RAS** | Replace-All Save | 保存时删光再插（或整批覆盖），与序号/外键时序纠缠 |
 | **TRAP-DAS** | Deferred Assignment SSOT | 客户端传空，服务端在 save 时才赋值 |
+| **TRAP-CDF** | Config Default Compatibility | 新字段列默认 / 创建工厂默认 / 枚举合法组合彼此不兼容 |
 
 模式可叠加（例如 TRAP-BSA + TRAP-RAS + TRAP-DAS 常同时出现）。
 
@@ -28,6 +29,7 @@
 | Q2 | 单次 API 是否携带 **≥2 条** 待分配该字段的记录？ | TRAP-BSA |
 | Q3 | 分配逻辑是否在 **foreach 循环内** 查 DB（COUNT/MAX）再 +1？ | TRAP-BSA |
 | Q4 | 保存是否 **整批 replace**（先删后插 / 全量覆盖子表）？ | TRAP-RAS |
+| Q5 | 新增配置字段时，**列默认 / 创建默认 / 关联字段默认** 是否两两组成合法组合？ | TRAP-CDF |
 
 > **原则**：相似业务（订单行号、工单号、明细序号、手工条目编号…）**共用同一模式**，只在 feature 的 test-cases 里换实体名与字段名，**不向 FDK 追加新文件**。
 
@@ -88,7 +90,39 @@
 
 ---
 
-## 5. Feature 如何落地（派生，不改 FDK）
+## 5. TRAP-CDF — 配置默认组合兼容
+
+### 5.1 反模式
+
+```text
+❌ ALTER … ADD col DEFAULT 'A'   // A 仅对 type=X 合法
+   创建实体时 type 默认 = Y         // Y 不允许 A → 首开功能即校验失败 / 下拉露出裸枚举值
+
+✅ 创建工厂按关联字段写兼容默认（defaultForRelated）
+   GET 配置时 resolve：不合法则回落到推荐默认
+   保存 / 预览前校验合法组合
+```
+
+### 5.2 必测场景码
+
+| 场景码 | 场景 | 预期 |
+|--------|------|------|
+| **CDF-DEFAULT-MISMATCH** | 仅用「列默认 + 关联字段默认」创建实体，不手工改配置 | 打开配置 / 首次保存 / 预览 **不报组合错误**；展示为合法 label |
+| **CDF-SWITCH-RELATED** | 切换关联字段（如周期/类型） | 从属字段自动重置为该分支默认，或明确提示非法 |
+| **CDF-LOAD-LEGACY** | 历史行已存在不合法组合 | GET 返回 resolve 后的合法值（或带警告），前端不露出裸枚举 |
+
+### 5.3 FDP 动作
+
+| 阶段 | 动作 |
+|------|------|
+| Spec Lock | Q5 命中 → test-cases 含 **CDF-DEFAULT-MISMATCH** |
+| Analyze | 有新配置列默认却无关联默认矩阵 → **P0 阻断** |
+| 开发 | 创建路径 + GET resolve + 保存校验三处一致 |
+| Converge | 用「空项目 / 首次开启」路径回归，禁止只测已配置老数据 |
+
+---
+
+## 6. Feature 如何落地（派生，不改 FDK）
 
 在 `{feature}/test-cases/*.md` 增加表格，**第一列引用场景码**：
 
@@ -101,12 +135,20 @@
 | BSA-CONTINUE | SN-02 | 已有 …-001，再提交 1 条空 | …-002 |
 ```
 
-RTM「测试」列可写 `SN-01 (BSA-MULTI-NEW)`，追溯至模式库即可。
+```markdown
+## 配置默认（TRAP-CDF）
+
+| 场景码 | 本模块用例 ID | 数据要点 | 预期 |
+|--------|---------------|----------|------|
+| CDF-DEFAULT-MISMATCH | CFG-01 | 新建实体不改配置即打开面板 | 无组合错误 |
+```
+
+RTM「测试」列可写 `SN-01 (BSA-MULTI-NEW)` / `CFG-01 (CDF-DEFAULT-MISMATCH)`，追溯至模式库即可。
 
 ---
 
 ## MECE 自检
 
-- TRAP-BSA / TRAP-RAS / TRAP-DAS 按「生成时机 × 持久化方式 × 职责」拆分，互不重叠 ✅  
-- **BSA-MULTI-NEW** 覆盖所有「同批多条延迟赋值」类缺陷，无需为每个模块新增 FDK 条目 ✅  
+- TRAP-BSA / TRAP-RAS / TRAP-DAS / TRAP-CDF 按「生成时机 × 持久化方式 × 职责 × 默认兼容」拆分，互不重叠 ✅  
+- **BSA-MULTI-NEW** 覆盖「同批多条延迟赋值」；**CDF-DEFAULT-MISMATCH** 覆盖「默认组合不兼容」 ✅  
 - 本文件仅 **模式 + 场景码**；具体实体/字段在各 feature test-cases 派生 ✅

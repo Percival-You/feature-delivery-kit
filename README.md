@@ -81,4 +81,4 @@ feature-delivery-kit/
 
 ## 版本
 
-- kit: **1.4.0**（+ `fdk-contribute` 踩坑回流 Skill；见 [CHANGELOG.md](./CHANGELOG.md)）
+- kit: **1.5.0**（+ TRAP-CDF / UID-VIF-ELSE；见 [CHANGELOG.md](./CHANGELOG.md)）
