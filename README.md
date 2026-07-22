@@ -10,6 +10,7 @@
 | 你想… | 读这个 |
 |--------|--------|
 | **日常开发怎么用、对 AI 说什么** | 👉 **[使用指南.md](./使用指南.md)** |
+| **名词看不懂（Converge/门禁/双轴…）** | 👉 **[docs/名词解析.md](./docs/名词解析.md)** |
 | 安装 / 移植到新项目 | [INSTALL.md](./INSTALL.md) |
 | 多项目维护 / 升级 | [MAINTENANCE.md](./MAINTENANCE.md) |
 | 踩坑晋升到 FDK | [CONTRIBUTING.md](./CONTRIBUTING.md) |
