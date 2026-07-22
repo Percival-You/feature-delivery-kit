@@ -6,6 +6,25 @@
 
 ---
 
+## [1.6.0] - 2026-07-22
+
+### Added
+
+- **`fdp-grill`** — 需求对齐追问；更新 `context.md` 领域词表 / 评审确认项
+- **`fdp-dual-review`** — 规格轴 × 规范轴分立协议
+- **`fdp-diagnose`** — 缺陷诊断环（复现→最小化→假设→观测→修复→回归）
+- **`fdp-handoff`** — 跨会话交接 → `handoff.md`
+- 模板 `templates/feature/handoff.md`；`context.md` 增加领域词表与评审确认项
+- 方案说明 `docs/fdp-enhance-from-matt/README.md`（借鉴 mattpocock/skills，不替换主链）
+
+### Changed
+
+- FDP 步骤 1 建议先 grill；步骤 5/5.5 标明规范轴 / 规格轴
+- `spec-converge` 报告模板强制规格轴分节，禁止用重构建议冒充 AC 缺口
+- `fdp-routing.mdc` 增加 grill / diagnose / handoff / 双轴口令
+
+---
+
 ## [1.5.0] - 2026-07-17
 
 ### Added

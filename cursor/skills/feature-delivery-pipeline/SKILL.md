@@ -34,7 +34,7 @@ description: Feature 交付流水线总指挥 — 产物检测、入口判定、
 
 | 条件 | entry_mode | 起始步骤 |
 |------|------------|----------|
-| 无 PRD/产品说明 | `full` | 1 需求澄清 → `#product-expert` |
+| 无 PRD/产品说明 | `full` | 1 建议 `#fdp-grill` → `#product-expert` |
 | 有 PRD+原型，无 tech-design | `from_architecture` | 2 架构 → `#architect-expert` |
 | 有 tech-design，无 spec 或未 approved | `from_spec_lock` | 2.5 → `#spec-lock` |
 | checklist `approved: true` | `from_development` | 4～5 → `#dev-expert` |
@@ -60,18 +60,19 @@ description: Feature 交付流水线总指挥 — 产物检测、入口判定、
 
 | 步骤 | 动作 | 执行者 | 人工门禁 |
 |------|------|--------|----------|
-| 1 | 需求澄清 | `#product-expert` | G1 需求确认 |
+| 1 | 需求澄清 | 建议 `#fdp-grill` → `#product-expert` | G1 需求确认 |
 | 2 | PRD + 技术方案 | product + `#architect-expert` | G2 方案确认 |
 | **2.5** | Spec Lock | `#spec-lock` | **G3 你确认 checklist** |
 | 3 | 规范 + 命名 | 加载项目栈 Skills | G3.5 可选 |
 | **2.6** | Analyze | `#spec-analyze` + `spec-analyzer` | G4 P0 清零（含 TRAP-UID） |
 | 4 | 任务拆解 | `tasks.md` / architect Step 7 | 大 feature 确认 |
 | 5 | 开发 + 单测 | `#dev-expert` + `#testing-strategy` | — |
-| 5 | 代码 review | `#cross-review` + bugbot | — |
-| **5.5** | Converge | `#spec-converge` + `spec-verifier` | G7 收敛 |
+| 5 | 代码 review（**规范轴**） | `#fdp-dual-review` + `#cross-review` + bugbot | — |
+| **5.5** | Converge（**规格轴**） | `#spec-converge` + `spec-verifier` | G7 收敛 |
 | **5.6** | 踩坑回流 FDK | `#fdk-contribute` | 可选；晋升 FDK 须用户确认 |
 | 6 | 接口/文档/提交 | `#dev-expert` + 项目规范 | G8 交付确认 |
 | — | UI 验证 | **人工** + spec 结构项 | ui-diff-checklist **结构复核** + 视觉 |
+| — | 诊断 / 交接 | `#fdp-diagnose` / `#fdp-handoff` | 按需，不进门禁 |
 
 ---
 
@@ -115,10 +116,14 @@ description: Feature 交付流水线总指挥 — 产物检测、入口判定、
 
 | Skill | 关系 |
 |-------|------|
+| `#fdp-grill` | 步骤 1 对齐追问；更新领域词表 |
 | `#spec-lock` | 2.5 规格固化（含 `prototype-fidelity-rules`） |
 | `#spec-analyze` | 2.6 实现前审查 |
-| `#spec-converge` | 5.5 实现后收敛 |
+| `#spec-converge` | 5.5 实现后收敛（规格轴） |
+| `#fdp-dual-review` | 规格轴 × 规范轴分立协议 |
 | `#fdk-contribute` | 5.6 踩坑回流与 FDK 模式晋升 |
+| `#fdp-diagnose` | 硬 bug 诊断环（可选） |
+| `#fdp-handoff` | 跨会话交接（可选） |
 | `#product-expert` / `#architect-expert` / `#dev-expert` | 项目阶段执行器 |
 | `#skills-evolution` | 流程偏差时记录改进信号 |
 

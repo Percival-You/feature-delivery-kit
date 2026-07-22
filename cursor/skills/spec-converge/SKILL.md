@@ -68,6 +68,8 @@ Hook 脚本做**机械检查**（RTM pending + 测试命令）；语义审查靠
 
 ## 六、输出 `converge-report.md`
 
+> **双轴**：本报告只承担 **规格轴（Spec）**。代码风格/分层等归 **规范轴**，见 `#fdp-dual-review` 与项目 `#cross-review`，**禁止**混在 Pending P0 里用「重构建议」冒充 AC 缺口。
+
 ```markdown
 # {feature} Converge 报告
 
@@ -76,14 +78,19 @@ Hook 脚本做**机械检查**（RTM pending + 测试命令）；语义审查靠
 ## 摘要
 - P0 AC 总数 / 已 verified / pending
 
-## Pending P0
+## 规格轴（Spec）
+
+### Pending P0
 | AC-ID | 缺口 | 建议动作 |
 
-## Verifier 差异（来自 spec-verifier）
+### Verifier 差异（来自 spec-verifier）
 ...
 
+## 规范轴（Standards）指针
+- 详见 cross-review / `#fdp-dual-review`（本文件不展开规范问题清单）
+
 ## 下一步
-- 已收敛 → 步骤 5.6 `#fdk-contribute`（踩坑回流，可选）→ 步骤 6 交付 / cross-review
+- 已收敛 → 步骤 5.6 `#fdk-contribute`（踩坑回流，可选）→ 步骤 6 交付 / cross-review（规范轴）
 - 未收敛 → 补任务列表
 
 ## 可回流 FDK 踩坑（已收敛时填写）
@@ -116,7 +123,14 @@ Hook 脚本做**机械检查**（RTM pending + 测试命令）；语义审查靠
 
 ---
 
+## 九、与双轴审查
+
+执行本 Skill 前可 Read `#fdp-dual-review`。规格轴未收敛时，不要宣布「开发完成可交付」。
+
+---
+
 ## MECE 自检
 
 - 功能覆盖（RTM）× 符合性（Verifier）× 客观测试（testCommand）互补 ✅
 - 视觉 UI 归人工，不声称自动覆盖 ✅
+- 规格轴 × 规范轴分离（`#fdp-dual-review`）✅

@@ -21,10 +21,11 @@
 
 将「需求 → 方案 → Spec Lock → 开发 → Converge → 交付」固化为：
 
-- **4 个 Skill** — 流水线编排 + Spec Lock / Analyze / Converge  
+- **流水线 Skills** — FDP 编排 + Spec Lock / Analyze / Converge / 踩坑回流  
+- **增强 Skills（1.6）** — grill 对齐、双轴审查、diagnose、handoff（借鉴 mattpocock，不替换主链）  
 - **2 个只读 Subagent** — 独立审查，不替实现者「自己审自己」  
 - **2 个 Hook** — 未 Spec Lock 不写业务代码；结束时可 Converge 循环  
-- **模板** — `context.md`、`spec/*`（含 **原型保真规则**）、UI 走查清单（结构 P0 + 视觉 P1）
+- **模板** — `context.md`（含领域词表）、`handoff.md`、`spec/*`（原型保真）、UI 走查清单
 
 ---
 
@@ -46,14 +47,15 @@
 
 | 步骤 | 名称 |
 |------|------|
-| 1～2 | 需求澄清 → PRD + 技术方案 |
+| 1～2 | 需求澄清（建议 grill）→ PRD + 技术方案 |
 | **2.5 ★** | **Spec Lock**（你确认清单） |
 | 3～4 | 规范 → 任务拆解 |
 | **2.6 ★** | **Analyze**（实现前） |
-| 5 | 开发 + 单测 + review |
-| **5.5 ★** | **Converge**（实现后，可循环） |
+| 5 | 开发 + 单测 + review（规范轴） |
+| **5.5 ★** | **Converge**（规格轴，可循环） |
 | 6 | 接口 / 文档 / 提交 |
 | — | **UI 走查**（结构复核 P0 + 视觉 P1） |
+| — | grill / diagnose / handoff（按需） |
 
 ---
 
@@ -81,4 +83,4 @@ feature-delivery-kit/
 
 ## 版本
 
-- kit: **1.5.0**（+ TRAP-CDF / UID-VIF-ELSE；见 [CHANGELOG.md](./CHANGELOG.md)）
+- kit: **1.6.0**（+ grill / 双轴审查 / diagnose / handoff；见 [CHANGELOG.md](./CHANGELOG.md)）
