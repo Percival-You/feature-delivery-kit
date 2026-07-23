@@ -6,6 +6,20 @@
 
 ---
 
+## [1.7.0] - 2026-07-23
+
+### Added
+
+- **TRAP-IRA**（In-Repo Alignment）— 同仓既有实现对齐：禁止「AC 能过」即交自创精简版
+- 侦测 **IRA-Q1～Q3**；场景码 IRA-UI-PAGER / FILTER / STATUS / ACTION / IRA-API-EXPORT / IRA-SIBLING-SKIP
+- `prototype-fidelity-rules.md`：与 TRAP-UID 正交；Analyze / 开发 / Converge / ui-diff 同仓对齐勾选
+
+### 来源
+
+- feature `work-brief-my-export` 回流（分页等偷懒实例推广为通用模式）
+
+---
+
 ## [1.6.1] - 2026-07-23
 
 ### Fixed

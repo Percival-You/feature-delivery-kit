@@ -1,7 +1,7 @@
 {
   "name": "feature-delivery-kit",
-  "version": "1.6.1",
-  "description": "通用 Feature 交付流水线 — Skills、Agents、Hooks、模板（含 grill/双轴审查/诊断/交接增强；1.6.1 修 Converge 过早触发）",
+  "version": "1.7.0",
+  "description": "通用 Feature 交付流水线 — Skills、Agents、Hooks、模板；1.7.0 增 TRAP-IRA 同仓实现对齐",
   "files": {
     "skills": [
       "feature-delivery-pipeline",
@@ -24,6 +24,6 @@
     ],
     "config": "fdp.config.example.json",
     "templates": "templates/feature",
-    "templatesNote": "含 context 领域词表、handoff.md、test-cases/common-traps、prototype-fidelity-rules"
+    "templatesNote": "含 context 领域词表、handoff.md、test-cases/common-traps、prototype-fidelity-rules（含 TRAP-UID + TRAP-IRA）"
   }
 }
