@@ -6,6 +6,18 @@
 
 ---
 
+## [1.6.1] - 2026-07-23
+
+### Fixed
+
+- **`fdp-converge-check`**：Spec Lock 未 `approved: true` 时不再因 RTM 全 `pending` 触发 Converge followup（误把「规格刚锁、尚未开发」当成未收敛）
+
+### Changed
+
+- `使用指南.md` / `spec-converge`：写明 Converge stop hook 的 G3 前置条件
+
+---
+
 ## [1.6.0] - 2026-07-22
 
 ### Added

@@ -10,6 +10,7 @@ import {
   readStdin,
   loadConfig,
   parseRtmPendingP0,
+  isSpecLockApproved,
   outputJson,
 } from './fdp-hook-lib.mjs';
 
@@ -30,7 +31,12 @@ if (status !== 'completed') empty();
 const feature = config.activeFeature || '';
 if (!feature) empty();
 
-const rtmPath = path.join(cwd, config.docsRoot || '.kiro/docs/tech', feature, 'spec', 'rtm.md');
+const docsRoot = config.docsRoot || '.kiro/docs/tech';
+// Spec Lock 未批准前 RTM 全是 pending 属正常；Converge 仅在实现后（G3 通过）才检查
+const lock = isSpecLockApproved(docsRoot, feature, cwd);
+if (!lock.exists || !lock.approved) empty();
+
+const rtmPath = path.join(cwd, docsRoot, feature, 'spec', 'rtm.md');
 if (!fs.existsSync(rtmPath)) empty();
 
 const pending = parseRtmPendingP0(fs.readFileSync(rtmPath, 'utf8'));

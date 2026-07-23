@@ -116,8 +116,8 @@ Hook 脚本做**机械检查**（RTM pending + 测试命令）；语义审查靠
 
 `fdp-converge-check.mjs` 在 stop 时：
 
-1. 读 `activeFeature` + `rtm.md`
-2. 统计 pending P0
+1. 读 `activeFeature` + checklist；**未 `approved: true` 则直接跳过**（Spec Lock / 澄清阶段不跑 Converge）
+2. 读 `rtm.md`，统计 pending P0
 3. 可选跑 `testCommand`
 4. 有缺口 → `followup_message` 提示补 AC
 
