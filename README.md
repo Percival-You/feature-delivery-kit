@@ -3,6 +3,7 @@
 > 面向 [Cursor](https://cursor.com) 的 Feature 交付流水线工具包 — 将「需求 → Spec Lock → 开发 → Converge → 交付」固化为 Skills、Hooks、Subagents 与文档模板。
 
 [![Kit Version](https://img.shields.io/badge/kit-1.7.2-blue)](./kit.manifest.json)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Cursor](https://img.shields.io/badge/Cursor-IDE-000?style=flat&logo=cursor&logoColor=white)](https://cursor.com)
 [![Changelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog-green)](./CHANGELOG.md)
 
@@ -112,6 +113,7 @@ flowchart LR
 ```
 feature-delivery-kit/
 ├── README.md                 # 本文件
+├── LICENSE                   # MIT
 ├── 使用指南.md                # 日常实操（推荐先读）
 ├── INSTALL.md
 ├── MAINTENANCE.md
@@ -155,4 +157,6 @@ feature-delivery-kit/
 
 ## 许可证
 
-暂未指定开源许可证。使用前请与仓库维护者确认使用范围。
+[MIT](./LICENSE) © 2026 [Percival-You](https://github.com/Percival-You)
+
+可自由克隆、修改并用于个人或商业项目；再分发时请保留版权声明与许可证全文。
