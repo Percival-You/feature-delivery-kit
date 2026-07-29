@@ -6,6 +6,16 @@
 
 ---
 
+## [1.7.2] - 2026-07-29
+
+### Changed
+
+- `docs/fdp-console/` 移至 `docs/_draft/fdp-console/`（未实现设计稿，不纳入 Git）
+- `.gitignore` 增加 `docs/_draft/`
+- `README.md` 重写为 GitHub 风格；`MAINTENANCE.md` 补充文档与草稿区说明
+
+---
+
 ## [1.7.1] - 2026-07-28
 
 ### Changed

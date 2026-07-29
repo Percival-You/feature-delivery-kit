@@ -1,6 +1,6 @@
 {
   "name": "feature-delivery-kit",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "通用 Feature 交付流水线 — Skills、Agents、Hooks、模板；1.7.0 增 TRAP-IRA 同仓实现对齐",
   "files": {
     "skills": [

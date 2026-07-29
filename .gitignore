@@ -4,3 +4,6 @@
 .DS_Store
 Thumbs.db
 *.bak.*
+
+# 未实现方案 / 设计草稿（本地保留，不纳入 SSOT）
+docs/_draft/
